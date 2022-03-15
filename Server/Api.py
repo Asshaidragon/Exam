@@ -45,7 +45,7 @@ class Requests_department:
                     data2.append(i)
             return 'departments: %s' % data2
     exposed = True
-# Дописать фильтр для департементов
+
 
 
 if __name__ == '__main__':

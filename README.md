@@ -1,24 +1,43 @@
-This is the final project for the autotest courses in python. 
-The meaning of the program is to output from an improvised database a list of users who fit certain filters.
+Смысл программы состоит в том, чтобы вывести из импровизированной базы данных список пользователей, с возможностью использования фильтров.
+Так же данный вывод покрыт автотестами на базе pytest.
+Оба этих модуля упакованы в докер контейнеры, которые работают вместе благодаря docker-compose.  
 
-Run docker-compose 
-======
-
-Run it as follows:
+Для поднятия docker-compose необходимо в корневой дериктории программы прописать команду:
 
 ```
-$ docker-compose up
+$ docker-compose up -d
+```
+Чтобы остановить контейнер использовать команду:
+
+```
+$ docker-compose down
 ```
 
-You can click on the link to see all the users: 
+
+После успешного поднятия можно перейти по ссылке и увидеть всех существующих пользователей, со всеми их данными: 
+
 http://localhost:3000/users
 
-To sort users by name and department use the following construction:
-http://localhost:3000/users?username=van&department=QA
-If necessary, you can remove one of the filters
+Пример использования фильтра по пользователям, где username= поиск по имени, а department=: по департаменту:
 
-To see all available departments use the following link:
+http://localhost:3000/users?username=van&department=QA
+
+При необходимости вы можете удалить или поменять фильтры
+
+Посмотреть все существующие департаменты:
+
 http://localhost:3000/department
 
-To sort by department name, use the following:
+Отфильтровать департаменты по названию:
+
 http://localhost:3000/department?name=Q
+
+
+Результат выполнения тестов выводится в терминал контейнера тестов (можно открыть через десктопное приложение Docker),
+а так же в файл log внутри контейнера.
+
+Команда для просмотра файла с результатами тестирования:
+
+```
+$ docker exec -it имя_контейнера_с_тестами cat log
+```

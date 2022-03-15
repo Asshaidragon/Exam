@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  users:
+    build: ./Users/
+    command: logic.py
+    ports:
+      - 3000:80
+    working_dir: /Users
+
+  test:
+    build: ./Autotests/
+    working_dir: /Autotests
+    command: sh -c "pytest -v -n2 test_users.py"
+    network_mode: host
+
+

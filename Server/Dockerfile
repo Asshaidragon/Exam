@@ -1,9 +1,9 @@
 FROM python:3.9-alpine
-WORKDIR /Users
-COPY requirements.txt /Users
+WORKDIR /Server
+COPY requirements.txt /Server
 RUN pip3 install -r requirements.txt --no-cache-dir
-COPY . /Users
+COPY . /Server
 ENTRYPOINT ["python3"]
-CMD ["logic.py"]
+CMD ["Api.py"]
 
 

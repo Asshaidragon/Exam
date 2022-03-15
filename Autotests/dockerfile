@@ -2,7 +2,7 @@ FROM python:3.9-alpine
 WORKDIR /Autotests
 COPY requirements.txt /Autotests
 RUN pip3 install -r requirements.txt --no-cache-dir
+RUN touch log
 COPY . /Autotests
 ADD test_users.py /Autotests
 ADD conftest.py /Autotests
-CMD ["logic.py"]

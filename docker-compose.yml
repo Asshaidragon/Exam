@@ -1,17 +1,19 @@
 version: '3.7'
 
 services:
-  users:
-    build: ./Users/
-    command: logic.py
+  api:
+    build: ./Server/
+    command: Api.py
     ports:
       - 3000:80
-    working_dir: /Users
+    working_dir: /Server
 
   test:
     build: ./Autotests/
     working_dir: /Autotests
-    command: sh -c "pytest -v -n2 test_users.py"
+    command: sh -c "pytest -v -n2 test_users.py | tee log; sleep infinity"
     network_mode: host
+    depends_on:
+      - api
 
 
